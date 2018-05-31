@@ -78,7 +78,12 @@ defmodule Weddell.Consumer do
           # Logger.debug fn ->
           #   {"Dispatching messages", count: length(messages)}
           # end
-          dispatch(messages, stream)
+          case messages do
+            {:error, _} ->
+              nil
+            _ ->
+              dispatch(messages, stream)
+          end
         end)
         {:stop, :stream_closed, stream}
       end
