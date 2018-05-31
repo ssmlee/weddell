@@ -115,6 +115,7 @@ defmodule Weddell.Client.Subscriber.Stream do
         modify_deadline_ack_ids: deadline_ack_ids,
         modify_deadline_seconds: deadline_seconds,
         stream_ack_deadline_seconds: stream_deadline)
+      IO.inspect request
     GRPCStub.stream_send(stream.grpc_stream, request)
   end
 

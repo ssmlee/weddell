@@ -46,15 +46,15 @@ defmodule Weddell.Consumer do
           {:ok, arr} = d.enum
           arr
         end).()
-        |> Enum.each(fn messages ->
+        |> Stream.each(fn messages ->
           IO.inspect :messages
           IO.inspect :messages
           IO.inspect :messages
           IO.inspect messages
           dispatch(messages, stream)
         end)
-        GenServer.cast(self(), :listen)
-        {:noreply, stream}
+        {:noreply, stream, :hibernate}
+        # {:stop, :stream_closed, stream}
       end
 
       defp dispatch(messages, stream) do
@@ -70,8 +70,16 @@ defmodule Weddell.Consumer do
             # end
             IO.inspect :success
             IO.inspect :success
-            stream
-            |> Subscriber.Stream.send(opts)
+            IO.inspect stream |> Subscriber.Stream.send(opts)
+          _ ->
+            IO.inspect :error
+            IO.inspect :error
+            IO.inspect :error
+            IO.inspect :error
+            IO.inspect :error
+            IO.inspect :error
+            IO.inspect :ada87s9d89a7sd
+            Subscriber.Stream.send([])
         end
       end
     end
