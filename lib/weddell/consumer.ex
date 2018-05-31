@@ -45,6 +45,8 @@ defmodule Weddell.Consumer do
         IO.inspect :listen
         IO.inspect :listen
         IO.inspect stream
+        IO.inspect :listen2
+        IO.inspect :listen2
         stream
         |> Subscriber.Stream.recv()
         |> (fn d ->
