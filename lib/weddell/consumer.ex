@@ -57,15 +57,15 @@ defmodule Weddell.Consumer do
       end
 
       defp dispatch(messages, stream) do
-        m = case messages do
-          {:error, _} -> []
-          {:ok, m} ->
-          m.received_messages
-        end
-        IO.inspect :m
-        IO.inspect m
+        # m = case messages do
+        #   {:error, _} -> []
+        #   {:ok, m} ->
+        #   m.received_messages
+        # end
+        # IO.inspect :m
+        # IO.inspect m
 
-        case handle_messages(m) do
+        case handle_messages(messages) do
           {:ok, opts} ->
             # Logger.debug fn ->
             #   ack = Keyword.get(opts, :ack, [])
@@ -75,13 +75,15 @@ defmodule Weddell.Consumer do
             #     delay_count: length(delay),
             #     no_response_count: length(m) - length(ack) + length(delay)}
             # end
+            IO.inspect :success
+            IO.inspect :success
             stream
             |> Subscriber.Stream.send(opts)
-          err ->
+          {:error, opts} ->
             IO.inspect :err
             IO.inspect err
             stream
-            |> Subscriber.Stream.send([ack: [], delay: []])
+            |> Subscriber.Stream.send(opts)
         end
       end
     end
