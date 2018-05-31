@@ -28,10 +28,20 @@ defmodule Weddell.Consumer do
       end
 
       def start_link(subscription) do
+        IO.inspect 17381239178312798738192789132789
+        IO.inspect 17381239178312798738192789132789
+        IO.inspect 17381239178312798738192789132789
+        IO.inspect 17381239178312798738192789132789
+        IO.inspect subscription
+        IO.inspect subscription
+        IO.inspect subscription
+        IO.inspect subscription
+        IO.inspect subscription
         GenServer.start_link(__MODULE__, [subscription])
       end
 
       def init(subscription) do
+        IO.inspect :asdijaisjdjiads
         stream =
           Weddell.client()
           |> Subscriber.Stream.open(subscription)
@@ -40,20 +50,49 @@ defmodule Weddell.Consumer do
       end
 
       def handle_cast(:listen, stream) do
+        IO.inspect :listen
+        IO.inspect :listen
+        IO.inspect :listen
+        IO.inspect :listen
+        IO.inspect :listen
         stream
         |> Subscriber.Stream.recv()
+        |> (fn d ->
+          IO.inspect d
+          {:ok, arr} = d.enum
+          IO.inspect :ssssasd809
+          arr
+        end).()
         |> Enum.each(fn messages ->
-          Logger.debug fn ->
-            {"Dispatching messages", count: length(messages)}
-          end
+          IO.inspect :messages
+          IO.inspect :messages
+          IO.inspect :messages
+          IO.inspect :messages
+          IO.inspect :messages
+          IO.inspect :messages
+          IO.inspect :messages
+          IO.inspect messages
+          # Logger.debug fn ->
+          #   {"Dispatching messages", count: length(messages)}
+          # end
           dispatch(messages, stream)
         end)
         {:stop, :stream_closed, stream}
       end
 
       defp dispatch(messages, stream) do
+        IO.inspect :dispaasdoih
+        IO.inspect :dispaasdoih
+        IO.inspect :dispaasdoih
+        IO.inspect :dispaasdoih
+        IO.inspect messages
         case handle_messages(messages) do
           {:ok, opts} ->
+            IO.inspect :opts
+            IO.inspect :opts
+            IO.inspect :opts
+            IO.inspect :opts
+            IO.inspect opts
             Logger.debug fn ->
               ack = Keyword.get(opts, :ack, [])
               delay = Keyword.get(opts, :delay, [])
