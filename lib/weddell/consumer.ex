@@ -62,6 +62,8 @@ defmodule Weddell.Consumer do
           {:ok, m} ->
           m.received_messages
         end
+        IO.inspect :m
+        IO.inspect m
 
         case handle_messages(m) do
           {:ok, opts} ->
@@ -75,6 +77,11 @@ defmodule Weddell.Consumer do
             # end
             stream
             |> Subscriber.Stream.send(opts)
+          err ->
+            IO.inspect :err
+            IO.inspect err
+            stream
+            |> Subscriber.Stream.send([ack: [], delay: []])
         end
       end
     end
