@@ -86,7 +86,10 @@ defmodule Weddell.Consumer do
         IO.inspect :dispaasdoih
         IO.inspect :dispaasdoih
         IO.inspect messages
-        case handle_messages(messages) do
+        {:ok, m} = messages
+        m = m.received_messages
+
+        case handle_messages(m) do
           {:ok, opts} ->
             IO.inspect :opts
             IO.inspect :opts
@@ -99,7 +102,7 @@ defmodule Weddell.Consumer do
               {"Sending message response",
                 ack_count: length(ack),
                 delay_count: length(delay),
-                no_response_count: length(messages) - length(ack) + length(delay)}
+                no_response_count: length(m) - length(ack) + length(delay)}
             end
             stream
             |> Subscriber.Stream.send(opts)
