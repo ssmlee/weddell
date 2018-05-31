@@ -52,7 +52,10 @@ defmodule Weddell.Consumer do
       def handle_cast(:listen, stream) do
         IO.inspect :listen
         IO.inspect :listen
-        IO.inspect :listen
+        IO.inspect :listenasd8y
+        IO.inspect :listenasd8y
+        IO.inspect :listenasd8y
+        IO.inspect :listenasd8y
         IO.inspect :listen
         IO.inspect :listen
         stream
@@ -83,6 +86,9 @@ defmodule Weddell.Consumer do
       defp dispatch(messages, stream) do
         IO.inspect :apple
         IO.inspect :dispaasdoih
+        IO.inspect :dispaasdoih
+        IO.inspect :dispaasdoih
+        IO.inspect :dispaasdoih
         IO.inspect :apple
         IO.inspect :apple
         IO.inspect messages
@@ -92,7 +98,11 @@ defmodule Weddell.Consumer do
         case handle_messages(m) do
           {:ok, opts} ->
             IO.inspect :opts
-            IO.inspect :opts
+            IO.inspect :asuhdaoiuaid
+            IO.inspect :asuhdaoiuaid
+            IO.inspect :asuhdaoiuaid
+            IO.inspect :asuhdaoiuaid
+            IO.inspect :asuhdaoiuaid
             IO.inspect :opts
             IO.inspect :opts
             IO.inspect opts
