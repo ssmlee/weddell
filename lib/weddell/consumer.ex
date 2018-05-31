@@ -32,8 +32,6 @@ defmodule Weddell.Consumer do
       end
 
       def init(subscription) do
-        IO.inspect :init
-        IO.inspect :init
         stream =
           Weddell.client()
           |> Subscriber.Stream.open(subscription)
@@ -42,21 +40,14 @@ defmodule Weddell.Consumer do
       end
 
       def handle_cast(:listen, stream) do
-        IO.inspect :listen3
-        IO.inspect :listen4
-        IO.inspect stream.subscription
-        IO.inspect :listen2
-        IO.inspect :listen2
         stream
         |> Subscriber.Stream.recv()
         |> (fn d ->
-          IO.inspect :aaaa
-          IO.inspect :aaaa
-          IO.inspect d
           {:ok, arr} = d.enum
           arr
         end).()
         |> Enum.each(fn messages ->
+          IO.inspect :messages
           IO.inspect :messages
           IO.inspect :messages
           IO.inspect messages
@@ -71,16 +62,9 @@ defmodule Weddell.Consumer do
           {:ok, m} ->
           m.received_messages
         end
-        IO.inspect :apple2
-        IO.inspect :apple2
-        IO.inspect :apple2
-        IO.inspect m
 
         case handle_messages(m) do
           {:ok, opts} ->
-            IO.inspect :optsoptsoptsoptsoptsoptsopts
-            IO.inspect :optsoptsoptsoptsoptsoptsopts
-            IO.inspect opts
             # Logger.debug fn ->
             #   ack = Keyword.get(opts, :ack, [])
             #   delay = Keyword.get(opts, :delay, [])
