@@ -78,17 +78,17 @@ defmodule Weddell.Consumer do
 
         case handle_messages(m) do
           {:ok, opts} ->
-            IO.inspect :opts
-            IO.inspect :opts
+            IO.inspect :optsoptsoptsoptsoptsoptsopts
+            IO.inspect :optsoptsoptsoptsoptsoptsopts
             IO.inspect opts
-            Logger.debug fn ->
-              ack = Keyword.get(opts, :ack, [])
-              delay = Keyword.get(opts, :delay, [])
-              {"Sending message response",
-                ack_count: length(ack),
-                delay_count: length(delay),
-                no_response_count: length(m) - length(ack) + length(delay)}
-            end
+            # Logger.debug fn ->
+            #   ack = Keyword.get(opts, :ack, [])
+            #   delay = Keyword.get(opts, :delay, [])
+            #   {"Sending message response",
+            #     ack_count: length(ack),
+            #     delay_count: length(delay),
+            #     no_response_count: length(m) - length(ack) + length(delay)}
+            # end
             stream
             |> Subscriber.Stream.send(opts)
         end
