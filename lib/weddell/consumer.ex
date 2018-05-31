@@ -52,25 +52,21 @@ defmodule Weddell.Consumer do
       def handle_cast(:listen, stream) do
         IO.inspect :listen
         IO.inspect :listen
-        IO.inspect :listenasd8y
-        IO.inspect :listenasd8y
-        IO.inspect :listenasd8y
-        IO.inspect :listenasd8y
         IO.inspect :listen
         IO.inspect :listen
         stream
         |> Subscriber.Stream.recv()
         |> (fn d ->
+          IO.inspect :aaaa
+          IO.inspect :aaaa
+          IO.inspect :aaaa
+          IO.inspect :aaaa
           IO.inspect d
           {:ok, arr} = d.enum
           IO.inspect :ssssasd809
           arr
         end).()
         |> Enum.each(fn messages ->
-          IO.inspect :messages
-          IO.inspect :messages
-          IO.inspect :messages
-          IO.inspect :messages
           IO.inspect :messages
           IO.inspect :messages
           IO.inspect :messages
