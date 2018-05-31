@@ -28,20 +28,12 @@ defmodule Weddell.Consumer do
       end
 
       def start_link(subscription) do
-        IO.inspect 17381239178312798738192789132789
-        IO.inspect 17381239178312798738192789132789
-        IO.inspect 17381239178312798738192789132789
-        IO.inspect 17381239178312798738192789132789
-        IO.inspect subscription
-        IO.inspect subscription
-        IO.inspect subscription
-        IO.inspect subscription
-        IO.inspect subscription
         GenServer.start_link(__MODULE__, [subscription])
       end
 
       def init(subscription) do
-        IO.inspect :asdijaisjdjiads
+        IO.inspect :init
+        IO.inspect :init
         stream =
           Weddell.client()
           |> Subscriber.Stream.open(subscription)
@@ -52,22 +44,16 @@ defmodule Weddell.Consumer do
       def handle_cast(:listen, stream) do
         IO.inspect :listen
         IO.inspect :listen
-        IO.inspect :listen
-        IO.inspect :listen
         stream
         |> Subscriber.Stream.recv()
         |> (fn d ->
           IO.inspect :aaaa
           IO.inspect :aaaa
-          IO.inspect :aaaa
-          IO.inspect :aaaa
           IO.inspect d
           {:ok, arr} = d.enum
-          IO.inspect :ssssasd809
           arr
         end).()
         |> Enum.each(fn messages ->
-          IO.inspect :messages
           IO.inspect :messages
           IO.inspect :messages
           IO.inspect messages
@@ -76,7 +62,7 @@ defmodule Weddell.Consumer do
           # end
           case messages do
             {:error, _} ->
-              stream
+              nil
             _ ->
               dispatch(messages, stream)
           end
