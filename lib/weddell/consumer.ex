@@ -81,10 +81,10 @@ defmodule Weddell.Consumer do
       end
 
       defp dispatch(messages, stream) do
+        IO.inspect :apple
         IO.inspect :dispaasdoih
-        IO.inspect :dispaasdoih
-        IO.inspect :dispaasdoih
-        IO.inspect :dispaasdoih
+        IO.inspect :apple
+        IO.inspect :apple
         IO.inspect messages
         {:ok, m} = messages
         m = m.received_messages
