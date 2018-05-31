@@ -71,9 +71,10 @@ defmodule Weddell.Consumer do
           {:ok, m} ->
           m.received_messages
         end
-        IO.inspect :apple
-        IO.inspect :apple
-        IO.inspect :apple
+        IO.inspect :apple2
+        IO.inspect :apple2
+        IO.inspect :apple2
+        IO.inspect m
 
         case handle_messages(m) do
           {:ok, opts} ->
