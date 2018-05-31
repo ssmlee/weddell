@@ -66,13 +66,14 @@ defmodule Weddell.Consumer do
       end
 
       defp dispatch(messages, stream) do
+        m = case messages do
+          {:error, _} -> []
+          {:ok, m} ->
+          m.received_messages
+        end
         IO.inspect :apple
         IO.inspect :apple
         IO.inspect :apple
-        IO.inspect messages
-        {:ok, m} = messages
-        m = m.received_messages
-        IO.inspect m
 
         case handle_messages(m) do
           {:ok, opts} ->
