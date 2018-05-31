@@ -54,7 +54,7 @@ defmodule Weddell.Consumer do
           dispatch(messages, stream)
         end)
         GenServer.cast(self(), :listen)
-        {:stop, :stream_closed, stream}
+        {:noreply, stream}
       end
 
       defp dispatch(messages, stream) do
