@@ -53,18 +53,11 @@ defmodule Weddell.Consumer do
           IO.inspect messages
           dispatch(messages, stream)
         end)
-        {:stop, :stream_closedstream_closedstream_closed, stream}
+        GenServer.cast(self(), :listen)
+        {:stop, :stream_closed, stream}
       end
 
       defp dispatch(messages, stream) do
-        # m = case messages do
-        #   {:error, _} -> []
-        #   {:ok, m} ->
-        #   m.received_messages
-        # end
-        # IO.inspect :m
-        # IO.inspect m
-
         case handle_messages(messages) do
           {:ok, opts} ->
             # Logger.debug fn ->
@@ -77,11 +70,6 @@ defmodule Weddell.Consumer do
             # end
             IO.inspect :success
             IO.inspect :success
-            stream
-            |> Subscriber.Stream.send(opts)
-          {:error, opts} ->
-            IO.inspect :err
-            IO.inspect err
             stream
             |> Subscriber.Stream.send(opts)
         end
