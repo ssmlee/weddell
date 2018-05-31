@@ -57,15 +57,7 @@ defmodule Weddell.Consumer do
           IO.inspect :messages
           IO.inspect :messages
           IO.inspect messages
-          # Logger.debug fn ->
-          #   {"Dispatching messages", count: length(messages)}
-          # end
-          case messages do
-            {:error, _} ->
-              nil
-            _ ->
-              dispatch(messages, stream)
-          end
+          dispatch(messages, stream)
         end)
         {:stop, :stream_closed, stream}
       end
@@ -81,7 +73,6 @@ defmodule Weddell.Consumer do
 
         case handle_messages(m) do
           {:ok, opts} ->
-            IO.inspect :opts
             IO.inspect :opts
             IO.inspect :opts
             IO.inspect opts
