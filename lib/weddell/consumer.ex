@@ -44,6 +44,7 @@ defmodule Weddell.Consumer do
       def handle_cast(:listen, stream) do
         IO.inspect :listen
         IO.inspect :listen
+        IO.inspect stream
         stream
         |> Subscriber.Stream.recv()
         |> (fn d ->
