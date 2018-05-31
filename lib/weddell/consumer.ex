@@ -43,6 +43,8 @@ defmodule Weddell.Consumer do
 
       def handle_cast(:listen, stream) do
         IO.inspect :listen3
+        IO.inspect :listen3
+        IO.inspect :listen4
         IO.inspect :listen4
         IO.inspect stream
         IO.inspect :listen2
