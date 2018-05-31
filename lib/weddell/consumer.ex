@@ -80,7 +80,7 @@ defmodule Weddell.Consumer do
           # end
           case messages do
             {:error, _} ->
-              nil
+              stream
             _ ->
               dispatch(messages, stream)
           end
