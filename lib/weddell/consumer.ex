@@ -53,7 +53,7 @@ defmodule Weddell.Consumer do
           IO.inspect messages
           dispatch(messages, stream)
         end)
-        {:stop, :stream_closed, stream}
+        {:stop, :stream_closedstream_closedstream_closed, stream}
       end
 
       defp dispatch(messages, stream) do
